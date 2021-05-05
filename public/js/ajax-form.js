@@ -30,7 +30,7 @@ whatsappMessage = window.encodeURIComponent(mesg)
 		console.log(whatsappMessage);
 		// Serialize the form data.
 		// var formData = $(form).serialize();
-		 var url ="https://wa.me/+919858888850/?text="+ whatsappMessage
+		 var url ="https://wa.me/+918302400400/?text="+ whatsappMessage
 
 		window.open(url, '_blank').focus();
 		// form.reset();
