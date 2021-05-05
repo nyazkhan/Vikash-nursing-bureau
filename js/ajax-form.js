@@ -10,39 +10,60 @@ $(function() {
 	$(form).submit(function(e) {
 		// Stop the browser from submitting the form.
 		e.preventDefault();
+		var elements = document.getElementById("contact-form").elements;
+		var obj ={};
+	var	mesg = ''
+		for(var i = 0 ; i < elements.length ; i++){
+			var item = elements.item(i);
+			obj[item.name] = item.value;
+		}
+		console.log(obj);
+		for (const key in obj) {
+			if (obj.hasOwnProperty(key)) {
+				const element = obj[key];
+				mesg = mesg+'\r\n\r\n '+ key + ' : ' +element	
+			}
+		}
+		// var whatsappMessage= "My title"+"\r\n\r\n"+"My description and link"
 
+whatsappMessage = window.encodeURIComponent(mesg)
+		console.log(whatsappMessage);
 		// Serialize the form data.
-		var formData = $(form).serialize();
+		// var formData = $(form).serialize();
+		 var url ="https://wa.me/+919858888850/?text="+ whatsappMessage
+
+		window.open(url, '_blank').focus();
+		// form.reset();
 
 		// Submit the form using AJAX.
-		$.ajax({
-			type: 'POST',
-			url: $(form).attr('action'),
-			data: formData
-		})
-		.done(function(response) {
-			// Make sure that the formMessages div has the 'success' class.
-			$(formMessages).removeClass('error');
-			$(formMessages).addClass('success');
+	// 	$.ajax({
+	// 		type: 'POST',
+	// 		url: $(form).attr('action'),
+	// 		data: formData
+	// 	})
+	// 	.done(function(response) {
+	// 		// Make sure that the formMessages div has the 'success' class.
+	// 		$(formMessages).removeClass('error');
+	// 		$(formMessages).addClass('success');
 
-			// Set the message text.
-			$(formMessages).text(response);
+	// 		// Set the message text.
+	// 		$(formMessages).text(response);
 
-			// Clear the form.
-			$('#contact-form input,#contact-form textarea').val('');
-		})
-		.fail(function(data) {
-			// Make sure that the formMessages div has the 'error' class.
-			$(formMessages).removeClass('success');
-			$(formMessages).addClass('error');
+	// 		// Clear the form.
+	// 		$('#contact-form input,#contact-form textarea').val('');
+	// 	})
+	// 	.fail(function(data) {
+	// 		// Make sure that the formMessages div has the 'error' class.
+	// 		$(formMessages).removeClass('success');
+	// 		$(formMessages).addClass('error');
 
-			// Set the message text.
-			if (data.responseText !== '') {
-				$(formMessages).text(data.responseText);
-			} else {
-				$(formMessages).text('Oops! An error occured and your message could not be sent.');
-			}
-		});
+	// 		// Set the message text.
+	// 		if (data.responseText !== '') {
+	// 			$(formMessages).text(data.responseText);
+	// 		} else {
+	// 			$(formMessages).text('Oops! An error occured and your message could not be sent.');
+	// 		}
+	// 	});
 	});
 
 });

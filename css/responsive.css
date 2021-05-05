@@ -566,11 +566,32 @@
     }
 
 
+.pt-110 {
+    padding-top: 60px !important;
+}
+.pb-85 {
+    padding-bottom: 50px;
+}
+.mb-25 {
+     margin-bottom: 0px; 
+}
+.pt-115 {
+    padding-top: 60px;
+}
+.pb-90 {
+    padding-bottom: 50px;
+}
+.pb-100 {
+    padding-bottom: 50px;
+}
+.pt-100 {
+    padding-top: 60px;
+}
+
 }
 
 /* Large Mobile :480px. */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-
 
 
 }
